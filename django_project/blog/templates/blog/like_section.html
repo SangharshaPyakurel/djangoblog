@@ -1,0 +1,15 @@
+<form>
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+        {% if liked %}
+            <button type="submit", id="like" name="object_id", value="{{ object.id }}" class="btn btn-danger btn-sm">Dislike</button>
+        {% else %}
+            <button type="submit", id="like" name="object_id", value="{{ object.id }}" class="btn btn-primary btn-sm">Like</button>
+        {% endif %}
+    {% else %}
+    <small>
+        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>to like
+    </small>
+    {% endif %}
+    - {{ total_likes }} Likes
+</form>
